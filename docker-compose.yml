@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  peformance-db:
+    image: postgres:15
+    container_name: proj_perf_db
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: adminpassword
+      POSTGRES_DB: perf_db
+    ports:
+      - "5432:5432"
+    # ÇOK ÖNEMLİ: pg_stat_statements eklentisini veritabanı motoru ayağa kalkarken yüklüyoruz.
+    # track=all ile her türlü statement izlenir.
+    command: postgres -c shared_preload_libraries=pg_stat_statements -c pg_stat_statements.track=all
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    restart: unless-stopped
+
+volumes:
+  pgdata:
