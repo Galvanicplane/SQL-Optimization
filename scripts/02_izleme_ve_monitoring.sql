@@ -5,10 +5,10 @@ SELECT pg_stat_statements_reset();
 -- BÖLÜM 2: SİSTEMİ YORAN "KÖTÜ" SORGU (FULL TABLE/SEQ SCAN)
 -- Index olmadığı için çok uzun sürecek bir filtreleme işlemi
 SELECT * 
-FROM users_log 
-WHERE user_id = 45214 
-  AND event_type = 'login' 
-ORDER BY event_date DESC;
+FROM airports 
+WHERE type = 'small_airport' 
+  AND iso_country = 'US' 
+ORDER BY name DESC;
 
 -- BÖLÜM 3: "PG_STAT_STATEMENTS" İLE DARBOĞAZ TESPİTİ
 -- Ortalama çalışma süresi (mean_exec_time) en yüksek olan komutları listeleyerek yavaş sorguyu saptama

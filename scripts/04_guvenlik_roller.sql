@@ -14,7 +14,7 @@ ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT ON TABLES TO readonly_use
 
 -- TEST: Okuma modunda yazmaya çalışmak "Permission denied" hatası vermelidir.
 -- SET ROLE readonly_user;
--- INSERT INTO users_log (user_id) VALUES (1);   <-- (BU SATIR ÇALIŞMAZ, HATA VERİR)
+-- INSERT INTO airports (id) VALUES (1);   <-- (BU SATIR ÇALIŞMAZ, HATA VERİR)
 -- RESET ROLE;
 
 
@@ -32,5 +32,5 @@ GRANT USAGE, SELECT, UPDATE ON ALL SEQUENCES IN SCHEMA public TO dml_user;
 
 -- TEST: Normal şekilde veri girebildiğini test edebilirsiniz.
 -- SET ROLE dml_user;
--- INSERT INTO users_log (user_id, event_type, details) VALUES (99999, 'test', 'Test data entry');
+-- INSERT INTO airports (id, ident, name) VALUES (99999, 'TEST', 'Test data entry');
 -- RESET ROLE;
